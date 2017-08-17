@@ -62,6 +62,7 @@
 
         <barreto.alessandro.feedlist.view.widget.CustomImageView
             android:id="@+id/iv_feed"
+            android:src="@drawable/bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

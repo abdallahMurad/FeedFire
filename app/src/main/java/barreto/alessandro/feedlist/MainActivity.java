@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements AdapterListFeed.O
 
         Uri uri = Uri.fromFile(new File(file));
         StorageReference reference = FirebaseStorage.getInstance().getReference().child("image_feed/"+ Calendar.getInstance().getTime()+".jpg");
-        reference.putFile( uri ).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @SuppressWarnings("VisibleForTests")
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -198,7 +198,10 @@ public class MainActivity extends AppCompatActivity implements AdapterListFeed.O
         fab.setOnClickListener(this);
         recyclerView = (RecyclerView)findViewById(R.id.rv_list_feed);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
+        layoutManager.setReverseLayout(true);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     private void showProgress(boolean b){
